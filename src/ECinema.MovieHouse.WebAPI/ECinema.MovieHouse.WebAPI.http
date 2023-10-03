@@ -1,0 +1,6 @@
+@ECinema.MovieHouse.WebAPI_HostAddress = http://localhost:5153
+
+GET {{ECinema.MovieHouse.WebAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
