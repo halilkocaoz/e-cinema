@@ -8,10 +8,10 @@
     <RootNamespace>ECinema.WebAPI</RootNamespace>
   </PropertyGroup>
 
+
   <ItemGroup>
-    <PackageReference Include="MediatR" Version="12.1.1" />
-    <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0-rc.1.23421.29" />
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <ProjectReference Include="..\ECinema.Common\ECinema.Common.csproj" />
   </ItemGroup>
+
   
 </Project>
