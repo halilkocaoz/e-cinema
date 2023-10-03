@@ -1,36 +1,24 @@
 using ECinema.Common;
+using ECinema.MovieHouse.WebAPI.Commands.MovieHouses.Create;
+using ECinema.MovieHouse.WebAPI.Models.MovieHouses;
+using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCommonSwagger();
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 
 var app = builder.Build();
 app.UseCommonSwagger();
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
-{
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast =  Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
+app.MapPost("/movieHouses", async (CreateMovieHouseModel createMovieHouseModel, ISender sender) =>
+    {
+        var command = new CreateMovieHouseCommand(createMovieHouseModel.Name, createMovieHouseModel.MovieGenres);
+        var result = await sender.Send(command);
+        return result;
+    })
+    .WithName("CreateMovieHouse")
+    .WithOpenApi();
 
 app.Run();
-
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-}
