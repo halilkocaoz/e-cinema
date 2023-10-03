@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  moviehouse.service:
+    build:
+      context: ./
+      dockerfile: moviehouse.Dockerfile
+    container_name: movieHouseService
+    restart: always
+  movie.service:
+    build:
+      context: ./
+      dockerfile: movie.Dockerfile
+    container_name: movieService
+    restart: always
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: rootpassword
+    ports:
+      - 27017:27017
