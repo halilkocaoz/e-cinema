@@ -1,11 +1,23 @@
+using ECinema.Movie.WebAPI.Data;
+using ECinema.WebAPI.Application.Movies.Commands.Update;
 using MediatR;
 
-namespace ECinema.WebAPI.Application.Movies.Commands.Update;
+namespace ECinema.Movie.WebAPI.Application.Movies.Commands.Update;
 
-internal sealed class UpdateMovieCommandHandler : IRequestHandler<UpdateMovieCommand, bool>
+internal sealed class UpdateMovieCommandHandler(IMovieRepository movieRepository) : IRequestHandler<UpdateMovieCommand, bool>
 {
-    public Task<bool> Handle(UpdateMovieCommand request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(UpdateMovieCommand request, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var movie = await movieRepository.GetByIdAsync(request.Id);
+        if (movie is null)
+            return false;
+        
+        movie.Cast = request.Cast;
+        movie.Name = request.Name;
+        movie.Base64Poster = request.Base64Poster;
+        movie.AddUpdatedMessage();
+        
+        await movieRepository.UpdateAsync(movie);
+        return true;
     }
 }
