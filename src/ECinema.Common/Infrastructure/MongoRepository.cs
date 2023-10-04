@@ -6,7 +6,7 @@ using MongoDB.Driver;
 
 namespace ECinema.Common.Infrastructure;
 
-public abstract class MongoRepository<T> : IRepository<T> where T : Entity
+public abstract class MongoRepository<T> : IRepository<T> where T : MongoEntity
 {
     private readonly IMongoCollection<T> _collection;
     private readonly IPublisher _publisher;
@@ -36,7 +36,7 @@ public abstract class MongoRepository<T> : IRepository<T> where T : Entity
 
     public virtual Task<T> GetByIdAsync(string id)
     {
-        return _collection.Find(x => x.Id == id).FirstOrDefaultAsync();
+        return _collection.Find(x => x._id.ToString() == id).FirstOrDefaultAsync();
     }
 
     private async Task PublishEvents(T entity)
@@ -62,14 +62,14 @@ public abstract class MongoRepository<T> : IRepository<T> where T : Entity
     {
         await PublishEvents(entity);
 
-        return await _collection.FindOneAndReplaceAsync(x => x.Id == entity.Id, entity);
+        return await _collection.FindOneAndReplaceAsync(x => x._id == entity._id, entity);
     }
 
     public virtual async Task<T> DeleteAsync(T entity)
     {
         await PublishEvents(entity);
 
-        return await _collection.FindOneAndDeleteAsync(x => x.Id == entity.Id);
+        return await _collection.FindOneAndDeleteAsync(x => x._id == entity._id);
     }
 }
 

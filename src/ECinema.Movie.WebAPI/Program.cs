@@ -1,4 +1,5 @@
 using ECinema.Common;
+using ECinema.Movie.WebAPI.Data;
 using ECinema.WebAPI.Application.Movies.Commands.Create;
 using ECinema.WebAPI.Application.Movies.Commands.Update;
 using ECinema.WebAPI.Models.Movies;
@@ -10,6 +11,7 @@ builder.Services.AddCommonSwagger();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 builder.Services.AddMongoDbSettings(builder.Configuration);
+builder.Services.AddSingleton<IMovieRepository, MovieRepository>();
 var app = builder.Build();
 app.UseCommonSwagger();
 
@@ -23,7 +25,7 @@ app.MapPost("/movies", async (CreateMovieModel createMovieRequest, ISender sende
     .WithName("CreateMovie")
     .WithOpenApi();
 
-app.MapPut("/movies/{id}", async (Guid id, UpdateMovieModel updateMovieRequest, ISender sender) =>
+app.MapPut("/movies/{id}", async (string id, UpdateMovieModel updateMovieRequest, ISender sender) =>
     {
         var command = new UpdateMovieCommand(id, updateMovieRequest.Name, updateMovieRequest.Base64Poster,
             updateMovieRequest.Cast);

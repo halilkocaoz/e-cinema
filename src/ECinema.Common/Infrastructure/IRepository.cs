@@ -3,7 +3,7 @@ using ECinema.Common.Infrastructure.Models;
 
 namespace ECinema.Common.Infrastructure;
 
-public interface IRepository<T>  where T : Entity
+public interface IRepository<T>  where T : MongoEntity
 {
     IQueryable<T> Get(Expression<Func<T, bool>> predicate = null);
     Task<T> GetAsync(Expression<Func<T, bool>> predicate);

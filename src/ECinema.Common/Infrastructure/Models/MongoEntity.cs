@@ -6,27 +6,25 @@ using MongoDB.Bson.Serialization.Attributes;
 namespace ECinema.Common.Infrastructure.Models;
 
 [BsonIgnoreExtraElements(Inherited = true)]
-public abstract class Entity
+public abstract class MongoEntity
 {
-    [BsonRepresentation(BsonType.ObjectId)]
     [BsonId]
-    [BsonElement(Order = 0)]
-    [JsonIgnore]
-    public string Id { get; } = ObjectId.GenerateNewId().ToString()!;
-
-    public virtual DateTime CreatedAt { get; } = DateTime.UtcNow;
+    public ObjectId _id { get; set; }
     
+    [BsonElement("CreatedAt")]
+    public DateTime CreatedAt { get; private set; } = DateTime.UtcNow;
+
     private List<INotification> _domainEvents;
 
     [JsonIgnore]
     public IReadOnlyCollection<INotification> DomainEvents => _domainEvents?.AsReadOnly();
-    
+
     protected void AddDomainEvent(INotification eventItem)
     {
         _domainEvents ??= new List<INotification>();
         _domainEvents.Add(eventItem);
     }
-    
+
     public void ClearDomainEvents()
     {
         _domainEvents?.Clear();
