@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECinema.MovieHouse.WebAPI",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECinema.Common", "src\ECinema.Common\ECinema.Common.csproj", "{7DA3F5BC-1D75-4C72-BB38-19F784977C26}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECinema.MovieHouse.Contracts", "src\ECinema.MovieHouse.Contracts\ECinema.MovieHouse.Contracts.csproj", "{165AB02C-CC2B-4855-83CD-21C941D3BEAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,10 +34,15 @@ Global
 		{7DA3F5BC-1D75-4C72-BB38-19F784977C26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7DA3F5BC-1D75-4C72-BB38-19F784977C26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7DA3F5BC-1D75-4C72-BB38-19F784977C26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{165AB02C-CC2B-4855-83CD-21C941D3BEAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{165AB02C-CC2B-4855-83CD-21C941D3BEAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{165AB02C-CC2B-4855-83CD-21C941D3BEAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{165AB02C-CC2B-4855-83CD-21C941D3BEAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{647B6797-2023-4A92-8513-D760F1866E5D} = {69C2D3A7-044A-4978-AE10-D82562789E84}
 		{0EAE7B90-3997-4692-8F99-20E1DDF1E0FB} = {69C2D3A7-044A-4978-AE10-D82562789E84}
 		{7DA3F5BC-1D75-4C72-BB38-19F784977C26} = {69C2D3A7-044A-4978-AE10-D82562789E84}
+		{165AB02C-CC2B-4855-83CD-21C941D3BEAF} = {69C2D3A7-044A-4978-AE10-D82562789E84}
 	EndGlobalSection
 EndGlobal

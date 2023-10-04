@@ -1,5 +1,5 @@
 using ECinema.Common;
-using ECinema.MovieHouse.WebAPI.Commands.MovieHouses.Create;
+using ECinema.MovieHouse.WebAPI.Application.Commands.MovieHouses.Create;
 using ECinema.MovieHouse.WebAPI.Models.MovieHouses;
 using MediatR;
 
