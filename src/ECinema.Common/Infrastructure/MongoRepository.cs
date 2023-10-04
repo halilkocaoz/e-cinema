@@ -75,8 +75,8 @@ public abstract class MongoRepository<T> : IRepository<T> where T : MongoEntity
 
 public class MongoDbSettings
 {
-    public string? ConnectionString { get; set; }
-    public string? Database { get; set; }
+    public string ConnectionString { get; set; }
+    public string Database { get; set; }
 
     public const string ConnectionStringValueName = nameof(ConnectionString);
     public const string DatabaseValueName = nameof(Database);
