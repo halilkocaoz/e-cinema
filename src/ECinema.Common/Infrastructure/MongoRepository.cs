@@ -9,11 +9,10 @@ namespace ECinema.Common.Infrastructure;
 public abstract class MongoRepository<T> : IRepository<T> where T : MongoEntity
 {
     private readonly IMongoCollection<T> _collection;
-    private readonly IPublisher _publisher;
-    [Obsolete("Obsolete")]
-    protected MongoRepository(IOptions<MongoDbSettings> options, IPublisher publisher)
+    private readonly IPublisher _mediatrPublisher;
+    protected MongoRepository(IOptions<MongoDbSettings> options, IPublisher mediatrPublisher)
     {
-        _publisher = publisher;
+        _mediatrPublisher = mediatrPublisher;
         var mongoDbSettings = options.Value;
 
         var client = new MongoClient(mongoDbSettings.ConnectionString);
@@ -44,7 +43,7 @@ public abstract class MongoRepository<T> : IRepository<T> where T : MongoEntity
         if (entity.DomainEvents != null)
         {
             foreach (var domainEvent in entity.DomainEvents)
-                await _publisher.Publish(domainEvent);
+                await _mediatrPublisher.Publish(domainEvent);
             entity.ClearDomainEvents();
         }
     }

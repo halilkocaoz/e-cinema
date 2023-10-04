@@ -11,9 +11,7 @@ builder.Services.AddCommonSwagger();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 builder.Services.AddMongoDbSettings(builder.Configuration);
-#pragma warning disable CS0618 // Type or member is obsolete
 builder.Services.AddSingleton<IMovieRepository, MovieRepository>();
-#pragma warning restore CS0618 // Type or member is obsolete
 var app = builder.Build();
 app.UseCommonSwagger();
 

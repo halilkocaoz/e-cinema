@@ -6,5 +6,4 @@ namespace ECinema.Movie.Data;
 
 public interface IMovieRepository : IRepository<Movie>;
 
-[Obsolete("Obsolete")]
 public class MovieRepository(IOptions<MongoDbSettings> opts, IPublisher publisher) : MongoRepository<Movie>(opts, publisher), IMovieRepository;
