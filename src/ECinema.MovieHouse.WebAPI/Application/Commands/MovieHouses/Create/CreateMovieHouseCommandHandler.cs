@@ -1,6 +1,6 @@
 using MediatR;
 
-namespace ECinema.MovieHouse.WebAPI.Commands.MovieHouses.Create;
+namespace ECinema.MovieHouse.WebAPI.Application.Commands.MovieHouses.Create;
 
 public class CreateMovieHouseCommandHandler : IRequestHandler<CreateMovieHouseCommand, bool>
 {
