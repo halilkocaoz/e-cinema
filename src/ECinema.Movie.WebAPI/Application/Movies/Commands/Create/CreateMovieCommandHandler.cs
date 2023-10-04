@@ -1,5 +1,4 @@
 using ECinema.Movie.WebAPI.Data;
-using ECinema.WebAPI.Application.Movies.Commands.Create;
 using MediatR;
 
 namespace ECinema.Movie.WebAPI.Application.Movies.Commands.Create;

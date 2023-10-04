@@ -5,9 +5,7 @@
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>true</InvariantGlobalization>
-    <RootNamespace>ECinema.Movie.WebAPI</RootNamespace>
   </PropertyGroup>
-
 
   <ItemGroup>
     <ProjectReference Include="..\ECinema.Common\ECinema.Common.csproj" />

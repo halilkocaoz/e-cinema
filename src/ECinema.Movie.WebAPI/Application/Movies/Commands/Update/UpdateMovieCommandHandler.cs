@@ -1,5 +1,4 @@
 using ECinema.Movie.WebAPI.Data;
-using ECinema.WebAPI.Application.Movies.Commands.Update;
 using MediatR;
 
 namespace ECinema.Movie.WebAPI.Application.Movies.Commands.Update;

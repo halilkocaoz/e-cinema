@@ -1,4 +1,4 @@
-namespace ECinema.WebAPI.Models.Movies;
+namespace ECinema.Movie.WebAPI.Models.Movies;
 
 public class CreateMovieModel(string name, string base64Poster, List<string> cast)
 {

@@ -1,8 +1,8 @@
 using ECinema.Common;
+using ECinema.Movie.WebAPI.Application.Movies.Commands.Create;
+using ECinema.Movie.WebAPI.Application.Movies.Commands.Update;
 using ECinema.Movie.WebAPI.Data;
-using ECinema.WebAPI.Application.Movies.Commands.Create;
-using ECinema.WebAPI.Application.Movies.Commands.Update;
-using ECinema.WebAPI.Models.Movies;
+using ECinema.Movie.WebAPI.Models.Movies;
 using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
