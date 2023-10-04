@@ -9,9 +9,8 @@ internal sealed class CreateMovieCommandHandler(IMovieRepository movieRepository
     public async Task<bool> Handle(CreateMovieCommand request, CancellationToken cancellationToken)
     {
         var movie = new Data.Movie(request.Name, request.Base64Poster, request.Cast);
-        movie.AddCreatedMessage();
-        
         await movieRepository.AddAsync(movie);
+        
         return true;
     }
 }
