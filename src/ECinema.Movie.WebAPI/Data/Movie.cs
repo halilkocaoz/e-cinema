@@ -12,7 +12,6 @@ public class Movie : MongoEntity
         Cast = cast;
         AddDomainEvent(new MovieCreatedEvent(this));
     }
-    
 
     public string Name { get; set; }
     public string Base64Poster { get; set; }
