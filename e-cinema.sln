@@ -5,9 +5,9 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{69C2D3A7-044A-4978-AE10-D82562789E84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECinema.Movie.WebAPI", "src\ECinema.Movie.WebAPI\ECinema.Movie.WebAPI.csproj", "{647B6797-2023-4A92-8513-D760F1866E5D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECinema.Movie.Service", "src\ECinema.Movie.Service\ECinema.Movie.Service.csproj", "{647B6797-2023-4A92-8513-D760F1866E5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECinema.MovieHouse.WebAPI", "src\ECinema.MovieHouse.WebAPI\ECinema.MovieHouse.WebAPI.csproj", "{0EAE7B90-3997-4692-8F99-20E1DDF1E0FB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECinema.MovieHouse.Service", "src\ECinema.MovieHouse.Service\ECinema.MovieHouse.Service.csproj", "{0EAE7B90-3997-4692-8F99-20E1DDF1E0FB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECinema.Common", "src\ECinema.Common\ECinema.Common.csproj", "{7DA3F5BC-1D75-4C72-BB38-19F784977C26}"
 EndProject
