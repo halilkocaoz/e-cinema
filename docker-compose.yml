@@ -7,17 +7,18 @@ services:
       dockerfile: moviehouse.Dockerfile
     container_name: movieHouseService
     restart: always
+    ports:
+      - "9990:8080"
   movie.service:
     build:
       context: ./
       dockerfile: movie.Dockerfile
     container_name: movieService
     restart: always
+    ports:
+      - "9991:8080"
   mongo:
     image: mongo:latest
     container_name: mongo
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: rootpassword
     ports:
       - 27017:27017
