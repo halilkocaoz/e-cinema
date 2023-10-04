@@ -21,6 +21,6 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: cd src/ECinema.Movie.WebAPI/ && dotnet restore
+      run: cd src/ECinema.Movie.Service/ && dotnet restore
     - name: Build
-      run: cd src/ECinema.Movie.WebAPI/ && dotnet build --no-restore
+      run: cd src/ECinema.Movie.Service/ && dotnet build --no-restore
