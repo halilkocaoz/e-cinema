@@ -11,7 +11,6 @@ builder.Services.AddMongoDbSettings(builder.Configuration);
 var app = builder.Build();
 app.UseCommonSwagger();
 
-app.UseHttpsRedirection();
 
 app.MapPost("/movieHouses", async (CreateMovieHouseModel createMovieHouseModel, ISender sender) =>
     {

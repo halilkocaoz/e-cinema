@@ -10,10 +10,8 @@ builder.Services.AddCommonSwagger();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 builder.Services.AddMongoDbSettings(builder.Configuration);
-
 var app = builder.Build();
 app.UseCommonSwagger();
-app.UseHttpsRedirection();
 
 app.MapPost("/movies", async (CreateMovieModel createMovieRequest, ISender sender) =>
     {
