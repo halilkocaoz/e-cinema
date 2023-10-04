@@ -8,7 +8,6 @@ namespace ECinema.Common.Infrastructure.Models;
 [BsonIgnoreExtraElements(Inherited = true)]
 public abstract class Entity
 {
-
     [BsonRepresentation(BsonType.ObjectId)]
     [BsonId]
     [BsonElement(Order = 0)]
@@ -17,10 +16,10 @@ public abstract class Entity
 
     public virtual DateTime CreatedAt { get; } = DateTime.UtcNow;
     
-    private List<INotification>? _domainEvents;
+    private List<INotification> _domainEvents;
 
     [JsonIgnore]
-    public IReadOnlyCollection<INotification>? DomainEvents => _domainEvents?.AsReadOnly();
+    public IReadOnlyCollection<INotification> DomainEvents => _domainEvents?.AsReadOnly();
     
     protected void AddDomainEvent(INotification eventItem)
     {
