@@ -18,7 +18,7 @@ app.UseCommonSwagger();
 app.MapPost("/movies", async (CreateMovieModel createMovieRequest, ISender sender) =>
     {
         var command = new CreateMovieCommand(createMovieRequest.Name, createMovieRequest.Base64Poster,
-            createMovieRequest.Cast);
+            createMovieRequest.Cast, createMovieRequest.Genres);
         var result = await sender.Send(command);
         return result;
     })
@@ -28,7 +28,7 @@ app.MapPost("/movies", async (CreateMovieModel createMovieRequest, ISender sende
 app.MapPut("/movies/{id}", async (string id, UpdateMovieModel updateMovieRequest, ISender sender) =>
     {
         var command = new UpdateMovieCommand(id, updateMovieRequest.Name, updateMovieRequest.Base64Poster,
-            updateMovieRequest.Cast);
+            updateMovieRequest.Cast, updateMovieRequest.Genres);
         var result = await sender.Send(command);
         return result;
     })

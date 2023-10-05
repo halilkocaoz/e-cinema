@@ -16,6 +16,7 @@ public class Movie : MongoEntity
     public string Name { get; set; }
     public string Base64Poster { get; set; }
     public List<string> Cast { get; set; }
+    public List<string> Genres { get; set; }
 
     public void AddUpdatedMessage() 
         => AddDomainEvent(new MovieUpdatedEvent(this));
