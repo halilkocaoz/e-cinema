@@ -1,4 +1,6 @@
 using System.Text.Json;
+using ECinema.MovieHouse.Contracts.Messaging.Movie;
+using MassTransit;
 using MediatR;
 
 namespace ECinema.Movie.Application.Movies.Events;
@@ -8,12 +10,15 @@ public class MovieCreatedEvent(Data.Movie movie) : INotification
     public Data.Movie Movie { get; set; } = movie;
 }
 
-public class MovieCreatedEventHandler(ILogger<MovieCreatedEventHandler> logger) : INotificationHandler<MovieCreatedEvent>
+public class MovieCreatedEventHandler(ILogger<MovieCreatedEventHandler> logger, IPublishEndpoint publishEndpoint)
+    : INotificationHandler<MovieCreatedEvent>
 {
-    public Task Handle(MovieCreatedEvent notification, CancellationToken cancellationToken)
+    public async Task Handle(MovieCreatedEvent notification, CancellationToken cancellationToken)
     {
-        // todo send rabbitmq message here
-        logger.LogInformation($"Movie created: {JsonSerializer.Serialize(notification.Movie)}");
-        return Task.CompletedTask;
+        logger.LogInformation($"{JsonSerializer.Serialize(notification.Movie)}");
+        await publishEndpoint.Publish(new MovieCreatedMessage(notification.Movie.Name,
+            notification.Movie.Base64Poster,
+            notification.Movie.Cast,
+            notification.Movie.Genres), cancellationToken);
     }
 }

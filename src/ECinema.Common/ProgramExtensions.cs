@@ -27,6 +27,6 @@ public static class ProgramExtensions
     public static void AddMongoDbSettings(this IServiceCollection services, IConfiguration configuration)
     {
         services.Configure<MongoDbSettings>(configuration.GetSection(nameof(MongoDbSettings)));
-        services.AddSingleton<MongoDbSettings>(sp => sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);
+        services.AddSingleton(sp => sp.GetRequiredService<IOptions<MongoDbSettings>>().Value);
     }
 }

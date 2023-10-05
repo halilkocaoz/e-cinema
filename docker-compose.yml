@@ -6,6 +6,11 @@ services:
     container_name: mongo
     ports:
       - 27017:27017
+  rabbitmq:
+    image: rabbitmq:latest
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
   moviehouse.service:
     build:
       context: ./
@@ -16,6 +21,7 @@ services:
       - "9990:8080"
     depends_on:
       - mongo
+      - rabbitmq
   movie.service:
     build:
       context: ./
@@ -26,3 +32,4 @@ services:
       - "9991:8080"
     depends_on:
       - mongo
+      - rabbitmq
