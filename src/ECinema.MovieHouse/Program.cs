@@ -2,6 +2,7 @@ using ECinema.Common;
 using ECinema.MovieHouse.Application.Commands.MovieHouses.Create;
 using ECinema.MovieHouse.Application.Messaging.Consumers.Movie;
 using ECinema.Movie.Contracts.Messaging.Movie;
+using ECinema.MovieHouse.Data;
 using ECinema.MovieHouse.Models.MovieHouses;
 using MassTransit;
 using MediatR;
@@ -10,13 +11,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCommonSwagger();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 builder.Services.AddMongoDbSettings(builder.Configuration);
+builder.Services.AddSingleton<IMovieHouseRepository, MovieHouseRepository>();
 
 var busControl = Bus.Factory.CreateUsingRabbitMq(cfg =>
 {
     cfg.Host("rabbitmq", "/");
     cfg.ReceiveEndpoint(MovieCreatedMessage.MessageName, e => { e.Consumer<MovieCreatedConsumer>(); });
     cfg.ReceiveEndpoint(MovieUpdatedMessage.MessageName, e => { e.Consumer<MovieUpdatedConsumer>(); });
-
 });
 
 var app = builder.Build();
@@ -25,7 +26,8 @@ app.UseCommonSwagger();
 await busControl.StartAsync();
 app.MapPost("/movieHouses", async (CreateMovieHouseModel createMovieHouseModel, ISender sender) =>
     {
-        var command = new CreateMovieHouseCommand(createMovieHouseModel.Name, createMovieHouseModel.MovieGenres);
+        var command = new CreateMovieHouseCommand(createMovieHouseModel.Name, createMovieHouseModel.InterestedGenres,
+            createMovieHouseModel.WillBeInformedEmails);
         var result = await sender.Send(command);
         return result;
     })
