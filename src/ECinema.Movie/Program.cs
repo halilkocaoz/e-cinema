@@ -3,6 +3,7 @@ using ECinema.Movie.Application.Movies.Commands.Create;
 using ECinema.Movie.Application.Movies.Commands.Update;
 using ECinema.Movie.Data;
 using ECinema.Movie.Models.Movies;
+using MassTransit;
 using MediatR;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,10 @@ builder.Services.AddCommonSwagger();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Program).Assembly));
 builder.Services.AddMongoDbSettings(builder.Configuration);
 builder.Services.AddSingleton<IMovieRepository, MovieRepository>();
+
+
+builder.Services.AddMassTransit(x => { x.UsingRabbitMq((_, cfg) => { cfg.Host("rabbitmq", "/"); }); });
+
 var app = builder.Build();
 app.UseCommonSwagger();
 
