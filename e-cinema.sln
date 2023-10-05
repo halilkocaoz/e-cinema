@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECinema.MovieHouse", "src\E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECinema.Common", "src\ECinema.Common\ECinema.Common.csproj", "{7DA3F5BC-1D75-4C72-BB38-19F784977C26}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECinema.MovieHouse.Contracts", "src\ECinema.MovieHouse.Contracts\ECinema.MovieHouse.Contracts.csproj", "{165AB02C-CC2B-4855-83CD-21C941D3BEAF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECinema.Movie.Contracts", "src\ECinema.Movie.Contracts\ECinema.Movie.Contracts.csproj", "{165AB02C-CC2B-4855-83CD-21C941D3BEAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

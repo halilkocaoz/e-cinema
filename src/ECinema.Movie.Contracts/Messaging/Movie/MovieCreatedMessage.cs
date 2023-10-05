@@ -1,4 +1,4 @@
-﻿namespace ECinema.MovieHouse.Contracts.Messaging.Movie;
+﻿namespace ECinema.Movie.Contracts.Messaging.Movie;
 
 public class MovieCreatedMessage(string name, string base64Poster, List<string> cast, List<string> genres)
 {

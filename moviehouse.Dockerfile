@@ -3,7 +3,7 @@ WORKDIR /App
 
 # Copy everything
 COPY ./src/ECinema.Common/ ECinema.Common/ 
-COPY ./src/ECinema.MovieHouse.Contracts/ ECinema.MovieHouse.Contracts/ 
+COPY ./src/ECinema.Movie.Contracts/ ECinema.Movie.Contracts/ 
 COPY ./src/ECinema.MovieHouse/ ECinema.MovieHouse/ 
 # Restore as distinct layers
 RUN dotnet restore ECinema.MovieHouse/

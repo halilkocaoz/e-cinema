@@ -5,5 +5,5 @@ public class CreateMovieModel(string name, string base64Poster, List<string> cas
     public string Name { get; } = name;
     public string Base64Poster { get; } = base64Poster;
     public List<string> Cast { get; } = cast;
-    public List<string> Genres { get; set; } = genres;
+    public List<string> Genres { get; } = genres;
 }

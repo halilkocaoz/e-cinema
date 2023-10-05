@@ -9,6 +9,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ECinema.Common\ECinema.Common.csproj" />
-    <ProjectReference Include="..\ECinema.MovieHouse.Contracts\ECinema.MovieHouse.Contracts.csproj" />
+    <ProjectReference Include="..\ECinema.Movie.Contracts\ECinema.Movie.Contracts.csproj" />
   </ItemGroup>
 </Project>

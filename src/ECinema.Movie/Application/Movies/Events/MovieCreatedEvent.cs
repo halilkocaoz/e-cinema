@@ -1,5 +1,5 @@
 using System.Text.Json;
-using ECinema.MovieHouse.Contracts.Messaging.Movie;
+using ECinema.Movie.Contracts.Messaging.Movie;
 using MassTransit;
 using MediatR;
 
@@ -7,7 +7,7 @@ namespace ECinema.Movie.Application.Movies.Events;
 
 public class MovieCreatedEvent(Data.Movie movie) : INotification
 {
-    public Data.Movie Movie { get; set; } = movie;
+    public Data.Movie Movie { get; } = movie;
 }
 
 public class MovieCreatedEventHandler(ILogger<MovieCreatedEventHandler> logger, IPublishEndpoint publishEndpoint)

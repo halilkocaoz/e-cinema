@@ -1,5 +1,5 @@
 using System.Text.Json;
-using ECinema.MovieHouse.Contracts.Messaging.Movie;
+using ECinema.Movie.Contracts.Messaging.Movie;
 using MassTransit;
 
 namespace ECinema.MovieHouse.Application.Messaging.Consumers.Movie;
