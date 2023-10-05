@@ -14,6 +14,7 @@ internal sealed class UpdateMovieCommandHandler(IMovieRepository movieRepository
         movie.Cast = request.Cast;
         movie.Name = request.Name;
         movie.Base64Poster = request.Base64Poster;
+        movie.Genres = request.Genres;
         movie.AddUpdatedMessage();
         
         await movieRepository.UpdateAsync(movie);
