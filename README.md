@@ -34,3 +34,9 @@ For practicing microservice basics.
 * Movie House service consumes the two queue and inform the movie houses.
 
 ![e-cinema](/assets/e-cinema.jpg)
+
+References:
+
+[https://github.com/gizemcifguvercin/E-News](https://github.com/gizemcifguvercin/E-News)
+
+[https://github.com/dotnet-architecture/eShopOnContainers](https://github.com/dotnet-architecture/eShopOnContainers)
