@@ -11,22 +11,22 @@ services:
     container_name: rabbitmq
     ports:
       - "5672:5672"
-  moviehouse.service:
+  movie.service:
     build:
       context: ./
-      dockerfile: moviehouse.Dockerfile
-    container_name: movieHouseService
+      dockerfile: movie.Dockerfile
+    container_name: movieService
     restart: always
     ports:
       - "9990:8080"
     depends_on:
       - mongo
       - rabbitmq
-  movie.service:
+  moviehouse.service:
     build:
       context: ./
-      dockerfile: movie.Dockerfile
-    container_name: movieService
+      dockerfile: moviehouse.Dockerfile
+    container_name: movieHouseService
     restart: always
     ports:
       - "9991:8080"

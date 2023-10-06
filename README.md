@@ -9,7 +9,11 @@ For practicing microservice basics.
 ## Installation & Run
 
 * `git clone https://github.com/halilkocaoz/e-cinema/`
-* `cd e-cinema && docker-compose up --build`
+* `cd e-cinema && docker pull  && docker-compose up --build`
+
+[Movie service: http://localhost:9990](http://localhost:9990/swagger/index.html)
+
+[Movie house service: http://localhost:9991](http://localhost:9991/swagger/index.html)
 
 ## Techs & Programming Approaches
 
@@ -29,4 +33,4 @@ For practicing microservice basics.
 * Movie service PUT /movies/{id} > updates exist movie, and publishes the [MovieUpdatedEvent](/src/ECinema.Movie/Application/Movies/Events/MovieUpdatedEvent.cs). MediatR handles the event and sends the updated movie to RabbitMQ Queue.
 * Movie House service consumes the two queue and inform the movie houses.
 
-![arch](/assets/e-cinema.jpg)
+![e-cinema](/assets/e-cinema.jpg)
