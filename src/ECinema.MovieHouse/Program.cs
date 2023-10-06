@@ -6,6 +6,7 @@ using ECinema.MovieHouse.Data;
 using ECinema.MovieHouse.Models.MovieHouses;
 using MassTransit;
 using MediatR;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddCommonSwagger();
@@ -13,17 +14,23 @@ builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(Progr
 builder.Services.AddMongoDbSettings(builder.Configuration);
 builder.Services.AddSingleton<IMovieHouseRepository, MovieHouseRepository>();
 
-var busControl = Bus.Factory.CreateUsingRabbitMq(cfg =>
+builder.Services.AddMassTransit(x =>
 {
-    cfg.Host("rabbitmq", "/");
-    cfg.ReceiveEndpoint(MovieCreatedMessage.MessageName, e => { e.Consumer<MovieCreatedConsumer>(); });
-    cfg.ReceiveEndpoint(MovieUpdatedMessage.MessageName, e => { e.Consumer<MovieUpdatedConsumer>(); });
+    x.AddConsumer<MovieCreatedConsumer>();
+    x.AddConsumer<MovieUpdatedConsumer>();
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.ReceiveEndpoint(MovieCreatedMessage.MessageName,
+            e => { e.ConfigureConsumer<MovieCreatedConsumer>(context); });
+        
+        cfg.ReceiveEndpoint(MovieUpdatedMessage.MessageName,
+            e => { e.ConfigureConsumer<MovieUpdatedConsumer>(context); });
+    });
 });
 
 var app = builder.Build();
 app.UseCommonSwagger();
 
-await busControl.StartAsync();
 app.MapPost("/movieHouses", async (CreateMovieHouseModel createMovieHouseModel, ISender sender) =>
     {
         var command = new CreateMovieHouseCommand(createMovieHouseModel.Name, createMovieHouseModel.InterestedGenres,
