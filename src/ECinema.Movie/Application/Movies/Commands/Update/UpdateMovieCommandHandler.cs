@@ -1,3 +1,4 @@
+using ECinema.Common;
 using ECinema.Movie.Data;
 using MediatR;
 
@@ -9,7 +10,7 @@ internal sealed class UpdateMovieCommandHandler(IMovieRepository movieRepository
     {
         var movie = await movieRepository.GetByIdAsync(request.Id);
         if (movie is null)
-            return false;
+            throw new ApiException("Movie not found", 404);
         
         movie.Cast = request.Cast;
         movie.Name = request.Name;
