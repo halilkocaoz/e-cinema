@@ -21,10 +21,9 @@ For practicing microservice basics.
 * RabbitMQ
 * MongoDB
 * Docker
-* MediatR
+* Mediator pattern with MediatR
 * RESTful web services
 * Domain Driven Design
-* CQRS
 * SOLID
   
 ## Use cases
