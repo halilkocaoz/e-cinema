@@ -28,9 +28,9 @@ For practicing microservice basics.
   
 ## Use cases
 
-* Movie service POST /movies > inserts new movie to MongoDB, and publishing the [MovieCreatedEvent](/src/ECinema.Movie/Application/Movies/Events/MovieCreatedEvent.cs). MediatR handles the event and sends the new movie to RabbitMQ Queue.
-* Movie service PUT /movies/{id} > updates exist movie, and publishes the [MovieUpdatedEvent](/src/ECinema.Movie/Application/Movies/Events/MovieUpdatedEvent.cs). MediatR handles the event and sends the updated movie to RabbitMQ Queue.
-* Movie House service consumes the two queue and inform the movie houses.
+* Movie service **POST /movies** > inserts new movie to MongoDB, and publishing the [MovieCreatedEvent](/src/ECinema.Movie/Application/Movies/Events/MovieCreatedEvent.cs). MediatR handles the event and sends the new movie to RabbitMQ Queue.
+* Movie service **PUT /movies/{id}** > updates exist movie, and publishes the [MovieUpdatedEvent](/src/ECinema.Movie/Application/Movies/Events/MovieUpdatedEvent.cs). MediatR handles the event and sends the updated movie to RabbitMQ Queue.
+* **Movie House service** consumes the two queue and informs the movie houses.
 
 ![e-cinema](/assets/e-cinema.jpg)
 
